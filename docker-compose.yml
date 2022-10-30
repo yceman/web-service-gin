@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  webservicegin:
+    image: webservicegin
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/go/src/app/
+    ports:
+      - 8080:8080
