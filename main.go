@@ -8,8 +8,15 @@ import (
 
 func main() {
 	router := gin.Default()
+	router.LoadHTMLGlob("themes/*")
+	//router.LoadHTMLFiles("themes/template1.html", "themes/template2.html")
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": "Main website",
+		})
+	})
 	router.GET("/albums", getAlbums)
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
 
 type album struct {
